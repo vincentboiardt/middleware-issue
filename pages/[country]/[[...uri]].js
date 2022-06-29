@@ -31,14 +31,21 @@ export default function Home({ context }) {
   )
 }
 
-export function getServerSideProps(context) {
+export function getStaticProps(context) {
   return {
     props: {
       context: {
-        query: context.query,
+        query: context.query || {},
         params: context.params,
         locale: context.locale,
       },
     },
+  }
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking',
   }
 }
