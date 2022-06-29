@@ -32,7 +32,6 @@ export default function Home({ context }) {
 }
 
 export function getServerSideProps(context) {
-  console.log('ctx', context)
   return {
     props: {
       context: {

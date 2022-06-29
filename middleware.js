@@ -5,7 +5,6 @@ const LOCALE = /^\/([a-z]{2}-[a-z]{2})(\/.*)?/
 
 // eslint-disable-next-line import/prefer-default-export
 export async function middleware(request) {
-  console.log(request.nextUrl.pathname)
   // Don't handle public files
   if (PUBLIC_FILE.test(request.nextUrl.pathname)) {
     return undefined
@@ -18,7 +17,7 @@ export async function middleware(request) {
 
   // For URLs that matches format, rewrite
   const matches = request.nextUrl.pathname.match(LOCALE)
-  if (matches[1]) {
+  if (matches?.[1]) {
     const locale = matches[1]
     const path = matches[2]
 
